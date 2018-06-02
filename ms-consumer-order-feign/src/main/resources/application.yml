@@ -1,0 +1,52 @@
+server:
+  port: 8010
+spring:
+  application:
+    name: microservice-consumer-order
+  zipkin:
+    base-url: http://localhost:9411
+  sleuth:
+    sampler:
+      percentage: 0.1
+  cloud:
+    loadbalancer:
+      retry:
+        enabled: false
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+  instance:
+    prefer-ip-address: true
+
+
+
+feign:
+  hystrix:
+    enabled: true
+
+ribbon:
+  OkToRetryOnAllOperations: false
+  MaxAutoRetriesNextServer: 0
+  MaxAutoRetries: 0
+#  #请求处理的超时时间
+#  ReadTimeout: 5000
+#  #请求连接的超时时间
+#  ConnectTimeout: 10000
+
+hystrix:
+  command:
+    default:
+#      execution:
+#        isolation:
+#          thread:
+#            timeoutInMilliseconds: 10000
+      circuitBreaker:
+        requestVolumeThreshold: 3
+        sleepWindowInMilliseconds: 10000
+
+#  threadpool:
+#    default:
+#      coreSize: 20
+#      maximumSize: 20
+
