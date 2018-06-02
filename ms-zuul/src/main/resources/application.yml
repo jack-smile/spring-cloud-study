@@ -1,0 +1,43 @@
+server:
+  port: 1111
+spring:
+  application:
+    name: api-gateway
+  zipkin:
+    base-url: http://localhost:9411
+  sleuth:
+    sampler:
+      percentage: 0.1
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+
+management:
+  security:
+    enabled: false
+
+zuul:
+  retryable: false
+  routes:
+    api-user:
+      path: /api-user/**
+      serviceId: MICROSERVICE-PROVIDER-USER
+#  ribbon-isolation-strategy: THREAD
+#  ribbon:
+#    eager-load:
+#      enabled: true
+
+#hystrix:
+#  command:
+#    MICROSERVICE-PROVIDER-USER:
+#      execution:
+#        isolation:
+#          thread:
+#            timeoutInMilliseconds: 10000
+
+#ribbon:
+#  MaxAutoRetries: 1
+#  MaxAutoRetriesNextServer: 2
+#  ReadTimeout: 10000
+#  ConnectTimeout: 10000
