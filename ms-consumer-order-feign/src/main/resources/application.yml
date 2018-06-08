@@ -34,6 +34,10 @@ ribbon:
 #  ReadTimeout: 5000
 #  #请求连接的超时时间
 #  ConnectTimeout: 10000
+  # 懒加载
+  eager-load:
+    enabled: true
+    clients: UserFeignClient
 
 hystrix:
   command:
