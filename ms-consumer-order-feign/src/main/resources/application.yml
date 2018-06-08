@@ -56,3 +56,6 @@ hystrix:
 #      coreSize: 20
 #      maximumSize: 20
 
+management:
+  security:
+    enabled: false
