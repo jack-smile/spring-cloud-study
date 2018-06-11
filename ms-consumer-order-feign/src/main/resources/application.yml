@@ -19,9 +19,6 @@ eureka:
   instance:
     prefer-ip-address: true
 
-# 开启日志
-logging.level.site.jackwang.cloud.study.user.feign.UserFeignClient: DEBUG
-
 feign:
   hystrix:
     enabled: true
@@ -59,3 +56,10 @@ hystrix:
 management:
   security:
     enabled: false
+
+
+# 开启feign日志
+logging.level.site.jackwang.cloud.study.user.feign.UserFeignClient: DEBUG
+
+# 开启sleuth日志
+logging.level.org.springframework.cloud.sleuth: info
